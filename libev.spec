@@ -41,11 +41,8 @@ Group: Development/C
 Requires: %libname = %version
 
 %description -n %develname
-libev is a high-performance event loop/event model with lots of features.
-(see benchmark at http://libev.schmorp.de/bench.html)
-
-It is modelled (very losely) after libevent and the Event perl module,
-but aims to be faster and more correct, and also more featureful.
+This is the development files needed in order to develop applications using
+libev.
 
 %prep
 %setup -q -n %name-%version-%prerel
