@@ -21,9 +21,8 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 libev is a high-performance event loop/event model with lots of features.
 (see benchmark at http://libev.schmorp.de/bench.html)
 
-It is modelled (very losely) after libevent
-(http://monkey.org/~provos/libevent/) and the Event perl module, but
-aims to be faster and more correct, and also more featureful.
+It is modelled (very losely) after libevent and the Event perl module,
+but aims to be faster and more correct, and also more featureful.
 
 %package -n %libname
 Summary: High-performance event loop/event model
@@ -33,9 +32,8 @@ Group: System/Libraries
 libev is a high-performance event loop/event model with lots of features.
 (see benchmark at http://libev.schmorp.de/bench.html)
 
-It is modelled (very losely) after libevent
-(http://monkey.org/~provos/libevent/) and the Event perl module, but
-aims to be faster and more correct, and also more featureful.
+It is modelled (very losely) after libevent and the Event perl module,
+but aims to be faster and more correct, and also more featureful.
 
 %package -n %develname
 Summary: High-performance event loop/event model
@@ -46,9 +44,8 @@ Requires: %libname = %version
 libev is a high-performance event loop/event model with lots of features.
 (see benchmark at http://libev.schmorp.de/bench.html)
 
-It is modelled (very losely) after libevent
-(http://monkey.org/~provos/libevent/) and the Event perl module, but
-aims to be faster and more correct, and also more featureful.
+It is modelled (very losely) after libevent and the Event perl module,
+but aims to be faster and more correct, and also more featureful.
 
 %prep
 %setup -q -n %name-%version-%prerel
