@@ -15,6 +15,7 @@ Source0: http://dist.schmorp.de/libev/%{name}-%{version}-%prerel.tar.gz
 License: BSD
 Group: System/Libraries
 Url: http://software.schmorp.de/pkg/libev.html
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 libev is a high-performance event loop/event model with lots of features.
