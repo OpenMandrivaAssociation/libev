@@ -1,6 +1,5 @@
-%define api 1.4
-%define major 2
-%define libname %mklibname ev %{api} %{major}
+%define major 3
+%define libname %mklibname ev %{major}
 %define develname %mklibname ev -d
 
 Summary:	High-performance event loop/event model
@@ -23,6 +22,7 @@ but aims to be faster and more correct, and also more featureful.
 %package -n %{libname}
 Summary:	High-performance event loop/event model
 Group:		System/Libraries
+Obsoletes:	%mklibname ev 1.4 2
 
 %description -n %{libname}
 libev is a high-performance event loop/event model with lots of features.
@@ -61,12 +61,11 @@ rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/libev*-%{api}.so.%{major}*
+%{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
 %defattr(-,root,root)
 %doc README
-%{_bindir}/event_rpcgen.py
 %{_includedir}/ev*.h
 %{_libdir}/libev*.a
 %{_libdir}/libev*.so
