@@ -1,21 +1,17 @@
-%define name libev
-%define version 1.4.0
-%define prerel beta
-%define release %mkrel 0.%prerel.1
 %define api 1.4
 %define major 2
-%define libname %mklibname ev %api %major
-%define develname %mklibname -d ev
+%define libname %mklibname ev %{api} %{major}
+%define develname %mklibname ev -d
 
-Summary: High-performance event loop/event model
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: http://dist.schmorp.de/libev/%{name}-%{version}-%prerel.tar.gz
-License: BSD
-Group: System/Libraries
-Url: http://software.schmorp.de/pkg/libev.html
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Summary:	High-performance event loop/event model
+Name:		libev
+Version:	3.41
+Release:	%mkrel 1
+License:	BSD
+Group:		System/Libraries
+Url:		http://software.schmorp.de/pkg/libev.html
+Source0:	http://dist.schmorp.de/libev/libev-3.41.tar.gz
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 libev is a high-performance event loop/event model with lots of features.
@@ -24,55 +20,55 @@ libev is a high-performance event loop/event model with lots of features.
 It is modelled (very losely) after libevent and the Event perl module,
 but aims to be faster and more correct, and also more featureful.
 
-%package -n %libname
-Summary: High-performance event loop/event model
-Group: System/Libraries
+%package -n %{libname}
+Summary:	High-performance event loop/event model
+Group:		System/Libraries
 
-%description -n %libname
+%description -n %{libname}
 libev is a high-performance event loop/event model with lots of features.
 (see benchmark at http://libev.schmorp.de/bench.html)
 
 It is modelled (very losely) after libevent and the Event perl module,
 but aims to be faster and more correct, and also more featureful.
 
-%package -n %develname
-Summary: High-performance event loop/event model
-Group: Development/C
-Requires: %libname = %version
+%package -n	%{develname}
+Summary:	High-performance event loop/event model
+Group:		Development/C
+Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
 
-%description -n %develname
+%description -n %{develname}
 This is the development files needed in order to develop applications using
 libev.
 
 %prep
-%setup -q -n %name-%version-%prerel
+%setup -q
 
 %build
 %configure2_5x
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
 
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
-%post -n %libname -p /sbin/ldconfig
-%postun -n %libname -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-%files -n %libname
+%files -n %{libname}
 %defattr(-,root,root)
-%_libdir/libev*-%api.so.%{major}*
+%{_libdir}/libev*-%{api}.so.%{major}*
 
-%files -n %develname
+%files -n %{develname}
 %defattr(-,root,root)
 %doc README
-%_bindir/event_rpcgen.py
-%_includedir/ev*.h
-%_libdir/libev*.a
-%_libdir/libev*.so
-%_libdir/libev*.la
-%_mandir/man3/ev*
-
+%{_bindir}/event_rpcgen.py
+%{_includedir}/ev*.h
+%{_libdir}/libev*.a
+%{_libdir}/libev*.so
+%{_libdir}/libev*.la
+%{_mandir}/man3/ev*
