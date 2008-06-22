@@ -9,7 +9,7 @@ Release:	%mkrel 1
 License:	BSD
 Group:		System/Libraries
 Url:		http://software.schmorp.de/pkg/libev.html
-Source0:	http://dist.schmorp.de/libev/libev-3.41.tar.gz
+Source0:	http://dist.schmorp.de/libev/%{name}-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
