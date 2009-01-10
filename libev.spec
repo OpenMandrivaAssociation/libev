@@ -4,7 +4,7 @@
 
 Summary:	High-performance event loop/event model
 Name:		libev
-Version:	3.51
+Version:	3.52
 Release:	%mkrel 1
 License:	BSD
 Group:		System/Libraries
