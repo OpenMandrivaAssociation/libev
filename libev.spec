@@ -4,7 +4,8 @@
 
 Summary:	High-performance event loop/event model
 Name:		libev
-Version:	3.53
+Epoch:		1
+Version:	3.7
 Release:	%mkrel 1
 License:	BSD
 Group:		System/Libraries
@@ -34,8 +35,8 @@ but aims to be faster and more correct, and also more featureful.
 %package -n	%{develname}
 Summary:	High-performance event loop/event model
 Group:		Development/C
-Requires:	%{libname} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
+Requires:	%{libname} = %{epoch}:%{version}-%{release}
+Provides:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description -n %{develname}
 This is the development files needed in order to develop applications using
