@@ -5,14 +5,13 @@
 Summary:	High-performance event loop/event model
 Name:		libev
 Epoch:		1
-Version:	4.04
-Release:	%mkrel 1
+Version:	4.11
+Release:	1
 License:	BSD
 Group:		System/Libraries
 Url:		http://software.schmorp.de/pkg/libev.html
 Source0:	http://dist.schmorp.de/libev/%{name}-%{version}.tar.gz
 Source1:	%{name}.pc.in
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 libev is a high-performance event loop/event model with lots of features.
@@ -59,34 +58,18 @@ aclocal
 automake
 
 %build
-%configure2_5x
+%configure2_5x --disable-static
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
-
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %doc README
 %{_includedir}/ev*.h
-%{_libdir}/libev*.a
 %{_libdir}/libev*.so
-%{_libdir}/libev*.la
 %{_libdir}/pkgconfig/%{name}.pc 
 %{_mandir}/man3/ev*
