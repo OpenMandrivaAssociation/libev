@@ -4,7 +4,7 @@
 
 Summary:	High-performance event loop/event model
 Name:		libev
-Epoch:		2
+Epoch:		3
 Version:	4.11
 Release:	1
 License:	BSD
