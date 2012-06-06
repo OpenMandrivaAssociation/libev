@@ -4,7 +4,7 @@
 
 Summary:	High-performance event loop/event model
 Name:		libev
-Epoch:		1
+Epoch:		2
 Version:	4.11
 Release:	1
 License:	BSD
@@ -37,10 +37,6 @@ Summary:	High-performance event loop/event model
 Group:		Development/C
 Requires:	%{libname} = %{epoch}:%{version}-%{release}
 Provides:	%{name}-devel = %{epoch}:%{version}-%{release}
-# Installation failed:  file /usr/include/event.h from 
-# install of lib64ev-devel-1:3.8-1mdv2010.0.x86_64 
-# conflicts with file from package lib64event-devel-1.4.12-1mdv2010.0.x86_64
-Conflicts:   %mklibname event -d
 
 %description -n %{develname}
 This is the development files needed in order to develop applications using
@@ -58,7 +54,8 @@ aclocal
 automake
 
 %build
-%configure2_5x --disable-static
+%configure2_5x --disable-static \
+	       --includedir=%{_includedir}/%{name}
 %make
 
 %install
@@ -69,7 +66,7 @@ automake
 
 %files -n %{develname}
 %doc README
-%{_includedir}/ev*.h
+%{_includedir}/%{name}/ev*.h
 %{_libdir}/libev*.so
 %{_libdir}/pkgconfig/%{name}.pc 
 %{_mandir}/man3/ev*
