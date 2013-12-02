@@ -5,8 +5,8 @@
 Summary:	High-performance event loop/event model
 Name:		libev
 Epoch:		1
-Version:	4.11
-Release:	6
+Version:	4.15
+Release:	1
 License:	BSD
 Group:		System/Libraries
 Url:		http://software.schmorp.de/pkg/libev.html
