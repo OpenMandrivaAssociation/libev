@@ -52,6 +52,7 @@ sed -i -e 's|lib_LTLIBRARIES|pkgconfigdir = $(libdir)/pkgconfig\n\npkgconfig_DAT
     Makefile.am Makefile.in 
 aclocal
 automake
+autoreconf -fiv
 
 %build
 %configure2_5x \
