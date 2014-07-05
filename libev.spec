@@ -1,12 +1,12 @@
-%define major	4
-%define libname	%mklibname ev %{major}
-%define devname	%mklibname ev -d
+%define major 4
+%define libname %mklibname ev %{major}
+%define devname %mklibname ev -d
 
 Summary:	High-performance event loop/event model
 Name:		libev
 Epoch:		1
 Version:	4.15
-Release:	6
+Release:	7
 License:	BSD
 Group:		System/Libraries
 Url:		http://software.schmorp.de/pkg/libev.html
@@ -20,10 +20,11 @@ libev is a high-performance event loop/event model with lots of features.
 It is modelled (very losely) after libevent and the Event perl module,
 but aims to be faster and more correct, and also more featureful.
 
+#----------------------------------------------------------------------------
+
 %package -n %{libname}
 Summary:	High-performance event loop/event model
 Group:		System/Libraries
-Obsoletes:	%mklibname ev 1.4 2
 
 %description -n %{libname}
 libev is a high-performance event loop/event model with lots of features.
@@ -32,15 +33,29 @@ libev is a high-performance event loop/event model with lots of features.
 It is modelled (very losely) after libevent and the Event perl module,
 but aims to be faster and more correct, and also more featureful.
 
-%package -n	%{devname}
+%files -n %{libname}
+%{_libdir}/libev.so.%{major}*
+
+#----------------------------------------------------------------------------
+
+%package -n %{devname}
 Summary:	High-performance event loop/event model
 Group:		Development/C
-Requires:	%{libname} = %{epoch}:%{version}-%{release}
-Provides:	%{name}-devel = %{epoch}:%{version}-%{release}
+Requires:	%{libname} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
 
 %description -n %{devname}
 This is the development files needed in order to develop applications using
 libev.
+
+%files -n %{devname}
+%doc README
+%{_includedir}/%{name}/ev*.h
+%{_libdir}/libev*.so
+%{_libdir}/pkgconfig/%{name}.pc 
+%{_mandir}/man3/ev*
+
+#----------------------------------------------------------------------------
 
 %prep
 %setup -q
@@ -49,12 +64,10 @@ libev.
 cp -p %{SOURCE1} .
 sed -i -e 's|Makefile|Makefile libev.pc|' configure.ac configure
 sed -i -e 's|lib_LTLIBRARIES|pkgconfigdir = $(libdir)/pkgconfig\n\npkgconfig_DATA = libev.pc\n\nlib_LTLIBRARIES|' \
-    Makefile.am Makefile.in 
-aclocal
-automake
-autoreconf -fiv
+    Makefile.am Makefile.in
 
 %build
+autoreconf -fiv
 %configure2_5x \
 	--disable-static \
 	--includedir=%{_includedir}/%{name}
@@ -62,14 +75,4 @@ autoreconf -fiv
 
 %install
 %makeinstall_std
-
-%files -n %{libname}
-%{_libdir}/libev.so.%{major}*
-
-%files -n %{devname}
-%doc README
-%{_includedir}/%{name}/ev*.h
-%{_libdir}/libev*.so
-%{_libdir}/pkgconfig/%{name}.pc 
-%{_mandir}/man3/ev*
 
