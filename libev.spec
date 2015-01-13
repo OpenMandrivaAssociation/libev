@@ -6,7 +6,7 @@ Summary:	High-performance event loop/event model
 Name:		libev
 Epoch:		1
 Version:	4.19
-Release:	2
+Release:	3
 License:	BSD
 Group:		System/Libraries
 Url:		http://software.schmorp.de/pkg/libev.html
@@ -68,6 +68,7 @@ sed -i -e 's|lib_LTLIBRARIES|pkgconfigdir = $(libdir)/pkgconfig\n\npkgconfig_DAT
     Makefile.am Makefile.in
 
 %build
+export CC=gcc
 autoreconf -fiv
 %configure \
 	--disable-static \
