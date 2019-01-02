@@ -5,8 +5,8 @@
 Summary:	High-performance event loop/event model
 Name:		libev
 Epoch:		1
-Version:	4.24
-Release:	3
+Version:	4.25
+Release:	1
 License:	BSD
 Group:		System/Libraries
 Url:		http://software.schmorp.de/pkg/libev.html
@@ -58,7 +58,7 @@ libev.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i -e "/^AM_INIT_AUTOMAKE/a\ " configure.ac
 
 # Add pkgconfig support
@@ -73,7 +73,8 @@ autoreconf -fiv
 %configure \
 	--disable-static \
 	--includedir=%{_includedir}/%{name}
-%make
+
+%make_build
 
 %install
-%makeinstall_std
+%make_install
