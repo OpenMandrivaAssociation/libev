@@ -9,7 +9,7 @@ Version:	4.33
 Release:	2
 License:	BSD
 Group:		System/Libraries
-Url:		http://software.schmorp.de/pkg/libev.html
+Url:		https://software.schmorp.de/pkg/libev.html
 Source0:	http://dist.schmorp.de/libev/%{name}-%{version}.tar.gz
 Source1:	%{name}.pc.in
 
