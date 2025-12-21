@@ -13,6 +13,11 @@ Url:		https://software.schmorp.de/pkg/libev.html
 Source0:	http://dist.schmorp.de/libev/%{name}-%{version}.tar.gz
 Source1:	%{name}.pc.in
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 %description
 libev is a high-performance event loop/event model with lots of features.
 (see benchmark at http://libev.schmorp.de/bench.html)
